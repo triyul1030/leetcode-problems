@@ -50,3 +50,11 @@ const target = 6;
 console.log(twoSum(nums, target)); // Output: [0,1]
 ```
 **Penjelasan:** `nums[0] + nums[1] == 6`, jadi jawabannya adalah `[0, 1]`.
+
+### Kasus Uji Tambahan
+```javascript
+const nums = [1, 5, 3, 7, 9];
+const target = 12;
+console.log(twoSum(nums, target)); // Output: [1,3]
+```
+**Penjelasan:** `nums[1] + nums[3] == 12` (5 + 7 = 12), jadi jawabannya adalah `[1, 3]`.
