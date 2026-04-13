@@ -5,7 +5,7 @@ Solusi ini menggunakan pendekatan **Hash Map (Object/Map di JS)** untuk mencapai
 ## Alur Berpikir
 
 1.  **Masalah**: Kita perlu mencari dua angka yang jika dijumlahkan hasilnya sama dengan `target`.
-2.  **Pendekatan Brute Force**: Menggunakan dua loop (`nested loop`) untuk mengecek setiap pasangan. Ini memiliki kompleksitas **O(n²)**, yang lambat untuk array besar.
+2.  **Pendekatan Brute Force**: Menggunakan dua loop (`nested loop`) untuk mengecek setiap pasangan.
 3.  **Pendekatan Optimal (Hash Map)**:
     *   Sambil kita melewati setiap angka dalam array, kita menghitung "pasangan" yang dibutuhkan agar mencapai target: `complement = target - currentNum`.
     *   Kita simpan angka yang sudah kita lewati ke dalam `Map` sebagai *key*, dan indeksnya sebagai *value*.
@@ -23,9 +23,30 @@ Solusi ini menggunakan pendekatan **Hash Map (Object/Map di JS)** untuk mencapai
 
 ## Kenapa Pakai `Map`?
 
-Di JavaScript, `Map` memberikan performa pencarian (*lookup*) yang sangat cepat, yaitu rata-rata **O(1)**. Ini jauh lebih cepat daripada mencari angka di dalam array menggunakan `indexOf()` atau `includes()` yang memakan waktu **O(n)**.
+Di JavaScript, `Map` memberikan performa pencarian (*lookup*) yang sangat cepat. Ini jauh lebih cepat daripada mencari angka di dalam array menggunakan `indexOf()` atau `includes()`.
 
-## Kompleksitas
+## Kasus Uji
 
-- **Time Complexity**: `O(n)` - Kita hanya melewati array satu kali.
-- **Space Complexity**: `O(n)` - Kita menyimpan hingga `n` elemen di dalam Map.
+### Contoh 1
+```javascript
+const nums = [2, 7, 11, 15];
+const target = 9;
+console.log(twoSum(nums, target)); // Output: [0,1]
+```
+**Penjelasan:** Karena `nums[0] + nums[1] == 9`, kita mengembalikan `[0, 1]`.
+
+### Contoh 2
+```javascript
+const nums = [3, 2, 4];
+const target = 6;
+console.log(twoSum(nums, target)); // Output: [1,2]
+```
+**Penjelasan:** `nums[1] + nums[2] == 6`, jadi jawabannya adalah `[1, 2]`.
+
+### Contoh 3
+```javascript
+const nums = [3, 3];
+const target = 6;
+console.log(twoSum(nums, target)); // Output: [0,1]
+```
+**Penjelasan:** `nums[0] + nums[1] == 6`, jadi jawabannya adalah `[0, 1]`.
